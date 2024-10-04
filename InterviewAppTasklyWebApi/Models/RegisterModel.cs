@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace InterviewAppTasklyWebApi.Models.Dto;
+namespace InterviewAppTasklyWebApi.Models;
 
 public class RegisterModel
 {

@@ -2,6 +2,10 @@
 using System.Text;
 using InterviewAppTasklyWebApi.Data;
 using InterviewAppTasklyWebApi.Entities;
+using InterviewAppTasklyWebApi.Repositories.Implementations;
+using InterviewAppTasklyWebApi.Repositories.Interfaces;
+using InterviewAppTasklyWebApi.Services.Implementations;
+using InterviewAppTasklyWebApi.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,9 +26,15 @@ try
     builder.Services.AddSwaggerGen();
     
     //Repositories
-    
+    builder.Services.AddScoped<ITaskManagementRepository, TaskManagementRepository>();
+    builder.Services.AddScoped<ITaskPriorityRepository, TaskPriorityRepository>();
+    builder.Services.AddScoped<ITaskStateRepository, TaskStateRepository>();
+
     //Services
-    
+    builder.Services.AddScoped<ITaskManagementService, TaskManagementService>();
+    builder.Services.AddScoped<ITaskPriorityService, TaskPriorityService>();
+    builder.Services.AddScoped<ITaskStateService, TaskStateService>();
+
     //DataBase
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

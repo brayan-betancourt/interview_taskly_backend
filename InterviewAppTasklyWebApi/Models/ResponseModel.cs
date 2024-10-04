@@ -1,4 +1,4 @@
-namespace InterviewAppTasklyWebApi.Models.Dto;
+namespace InterviewAppTasklyWebApi.Models;
 
 public class ResponseModel
 {
